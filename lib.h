@@ -74,3 +74,48 @@
  * Max bus capacity
 */
 #define MAX_BUS_SIZE 20
+
+#define DATA_ARRIVAL_TIME 1
+#define DATA_DESTINATION  2
+
+
+/**
+ * Variable for statistics
+*/
+/**
+ * Average and maximum number in each queue
+*/
+#define VARIABLE_NUM_TERMINAL_1 1
+#define VARIABLE_NUM_TERMINAL_2 2
+#define VARIABLE_NUM_CAR_RENTAL 3
+
+/**
+ * Average and maximum delay in each queue
+*/
+#define VARIABLE_DELAY_TERMINAL_1 4
+#define VARIABLE_DELAY_TERMINAL_2 5
+#define VARIABLE_DELAY_CAR_RENTAL 6
+
+/**
+ * Average and maximum number on the bus
+*/
+#define VARIABLE_NUM_BUS 7
+
+/**
+ * Average, maximum, and minimum time the bus is stopped at each location
+*/
+#define VARIABLE_BUS_STOP_TERMINAL_1 8
+#define VARIABLE_BUS_STOP_TERMINAL_2 9
+#define VARIABLE_BUS_STOP_CAR_RENTAL 10
+
+/**
+ * Average, maximum, and minimum time for the bus to make a loop (departure
+ * from the car rental to the next such departure)
+*/
+#define VARIABLE_BUS_LOOP 11
+
+/**
+ * Average, maximum, and minimum time a person is in the system by arrival
+ * location
+*/
+#define VARIABLE_PERSON_SYSTEM 12
