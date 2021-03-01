@@ -74,6 +74,13 @@ void loadPersonTerminal1() {
  * Terminal 2
 */
 void arrivalPersonTerminal2() {
+    transfer[DATA_ARRIVAL_TIME] = sim_time;
+    transfer[DATA_DESTINATION] = DESTINATION_CAR_RENTAL;
+    list_file(LAST, LIST_TERMINAL_2);
+    timest(list_size[LIST_TERMINAL_2], VARIABLE_NUM_TERMINAL_2);
+
+    //set event
+    event_schedule(sim_time + expon(60.0 * 60.0 / 10.0, STREAM_INTERARRIVAL_TERMINAL_2), EVENT_ARRIVAL_PERSON_TERMINAL_2);
 
 }
 
