@@ -102,7 +102,7 @@ void departureBusTerminal2() {
         event_schedule(busArrival + 5.0 * 60.0, EVENT_DEPARTURE_BUS_TERMINAL_2); // kalau gaada yang naik atau turun
     } else {
         sampst ((sim_time - busArrival), VARIABLE_BUS_STOP_TERMINAL_2);
-        event_schedule(sim_time + 1.0/(30.0 * 60.0 * 60.0), EVENT_ARRIVAL_BUS_TERMINAL_2);
+        event_schedule(sim_time + 4.5/(30.0 * 60.0 * 60.0), EVENT_ARRIVAL_BUS_TERMINAL_2);
     }
 }
 
@@ -170,9 +170,18 @@ void initModel() {
  * Print answer for TUBES 1
 */
 void print() {
+    /**
+     * Print answer fot TUBES 1
+    */
+    
 
 }
 
 int main() {
-    
+
+
+    init_simlib(); // harus init simlib
+
+
+    return 0;    
 }
