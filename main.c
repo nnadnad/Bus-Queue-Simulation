@@ -4,6 +4,7 @@
 
 double busArrival = 0.0;
 double busDepartureFromCarRental = 0.0;
+FILE *outfile;
 
 int listBusCapacity() {
     return list_size[LIST_BUS_TO_TERMINAL_1] + list_size[LIST_BUS_TO_TERMINAL_2] + list_size[LIST_BUS_TO_CAR_RENTAL];
@@ -179,7 +180,6 @@ void loadPersonCarRental() {
 
 int main() {
 
-
     init_simlib(); // harus init simlib
 
     while ( next_event_type != EVENT_END_SIMULATION) {
@@ -233,6 +233,34 @@ int main() {
         }
     }
 
+    outfile = fopen("carRental.out", "w");
+    fprintf(outfile, "------------------------------------ Statistics  ------------------------------------\n");
+    timest(0,-VARIABLE_NUM_TERMINAL_1);
+    fprintf(outfile, "(A) Average and maximum number in each queue\n");
+    fprintf(outfile, "    1. Terminal 1:\n");
+    fprintf(outfile, "       - Avreage: %.2lf\n", transfer[1]);
+    fprintf(outfile, "       - Maximun: %.2lf\n", transfer[2]);
+    timest(0, -VARIABLE_NUM_TERMINAL_2);
+    fprintf(outfile, "    2. Terminal 2:\n");
+    fprintf(outfile, "       - Avreage: %.2lf\n", transfer[1]);
+    fprintf(outfile, "       - Maximun: %.2lf\n", transfer[2]);
+    timest(0, -VARIABLE_NUM_CAR_RENTAL);
+    fprintf(outfile, "    2. Car Rental:\n");
+    fprintf(outfile, "       - Avreage: %.2lf\n", transfer[1]);
+    fprintf(outfile, "       - Maximun: %.2lf\n\n", transfer[2]);
+
+    fprintf(outfile, "(B) Average and maximum delay in each queue\n");
+    fprintf(outfile, "    1. Terminal 1:\n");
+    fprintf(outfile, "       - Avreage: %.2lf\n", transfer[1]);
+    fprintf(outfile, "       - Maximun: %.2lf\n", transfer[2]);
+    timest(0, -VARIABLE_NUM_TERMINAL_2);
+    fprintf(outfile, "    2. Terminal 2:\n");
+    fprintf(outfile, "       - Avreage: %.2lf\n", transfer[1]);
+    fprintf(outfile, "       - Maximun: %.2lf\n", transfer[2]);
+    timest(0, -VARIABLE_NUM_CAR_RENTAL);
+    fprintf(outfile, "    2. Car Rental:\n");
+    fprintf(outfile, "       - Avreage: %.2lf\n", transfer[1]);
+    fprintf(outfile, "       - Maximun: %.2lf\n\n", transfer[2]);
 
     return 0;    
 }
