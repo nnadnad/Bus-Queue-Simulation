@@ -159,28 +159,79 @@ void loadPersonCarRental() {
 
 }
 
-/**
- * Init model simulation
-*/
-void initModel() {
+// /**
+//  * Init model simulation
+// */
+// void initModel() {
 
-}
+// }
 
-/**
- * Print answer for TUBES 1
-*/
-void print() {
-    /**
-     * Print answer fot TUBES 1
-    */
+// /**
+//  * Print answer for TUBES 1
+// */
+// void print() {
+//     /**
+//      * Print answer fot TUBES 1
+//     */
     
 
-}
+// }
 
 int main() {
 
 
     init_simlib(); // harus init simlib
+
+    while ( next_event_type != EVENT_END_SIMULATION) {
+        timing();
+        switch(next_event_type) {
+        case EVENT_ARRIVAL_PERSON_TERMINAL_1:
+            arrivalPersonTerminal1();
+            break;
+        case EVENT_ARRIVAL_PERSON_TERMINAL_2:
+            arrivalPersonTerminal2();
+            break;
+        case EVENT_ARRIVAL_PERSON_CAR_RENTAL:
+            arrivalPersonCarRental();
+            break;
+        case EVENT_ARRIVAL_BUS_TERMINAL_1:
+            arrvialBusTerminal1();
+            break;
+        case EVENT_ARRIVAL_BUS_TERMINAL_2:
+            arrvialBusTerminal2();
+            break;
+        case EVENT_ARRIVAL_BUS_CAR_RENTAL:
+            arrvialBusCarRental();
+            break;
+        case EVENT_DEPARTURE_BUS_TERMINAL_1:
+            departureBusTerminal1();
+            break;
+        case EVENT_DEPARTURE_BUS_TERMINAL_2:
+            departureBusTerminal2();
+            break;
+        case EVENT_DEPARTURE_BUS_CAR_RENTAL:
+            departureBusCarRental();
+            break;
+        case EVENT_UNLOAD_PERSON_TERMINAL_1:
+            unloadPersonTerminal1();
+            break;
+        case EVENT_UNLOAD_PERSON_TERMINAL_2:
+            unloadPersonTerminal2();
+            break;
+        case EVENT_UNLOAD_PERSON_CAR_RENTAL:
+            unloadPersonCarRental();
+            break;
+        case EVENT_LOAD_PERSON_TERMINAL_1:
+            loadPersonTerminal1();
+            break;
+        case EVENT_LOAD_PERSON_TERMINAL_2:
+            loadPersonTerminal2();
+            break;
+        case EVENT_LOAD_PERSON_CAR_RENTAL:
+            loadPersonCarRental();
+            break;
+        }
+    }
 
 
     return 0;    
