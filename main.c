@@ -101,9 +101,16 @@ void arrvialBusTerminal2() {
 }
 
 void departureBusTerminal2() {
-    if ((sim_time - busArrival) < (5.0 * 60.0)) {
+    double temp = sim_time - busArrival;
+    if ((temp - (5.0 * 60.0)) < 1e-9) {
+        sampst ((sim_time - busArrival), VARIABLE_BUS_STOP_TERMINAL_2);
+        event_schedule(sim_time + 4.5/30.0 * 60.0 * 60.0, EVENT_ARRIVAL_BUS_CAR_RENTAL);
+    } 
+    else if (temp < (5.0 * 60.0)){
         event_schedule(busArrival + 5.0 * 60.0, EVENT_DEPARTURE_BUS_TERMINAL_2); // kalau gaada yang naik atau turun
-    } else {
+        printf("%f\n", sim_time - busArrival);
+    }
+    else{
         sampst ((sim_time - busArrival), VARIABLE_BUS_STOP_TERMINAL_2);
         event_schedule(sim_time + 4.5/30.0 * 60.0 * 60.0, EVENT_ARRIVAL_BUS_CAR_RENTAL);
     }
@@ -247,8 +254,8 @@ int main() {
     event_schedule(sim_time + 4.5 / 30.0 * 60.0 * 60.0, EVENT_ARRIVAL_BUS_TERMINAL_1); 
     event_schedule(sim_time + 80.0 * 60.0 * 60.0, EVENT_END_SIMULATION);
 
-    sampst(0.0, 0);
-    timest(0.0, 0);
+    // sampst(0.0, 0);
+    // timest(0.0, 0);
 
     // printf("test");
     while ( next_event_type != EVENT_END_SIMULATION) {
@@ -285,7 +292,7 @@ int main() {
             break;
         case EVENT_DEPARTURE_BUS_TERMINAL_2:
             departureBusTerminal2();
-            printf("sim time: %.2f",sim_time);
+            printf("\nsim time: %.2f",sim_time);
             break;
         case EVENT_DEPARTURE_BUS_CAR_RENTAL:
             departureBusCarRental();
@@ -313,7 +320,7 @@ int main() {
             break;
         case EVENT_LOAD_PERSON_CAR_RENTAL:
             loadPersonCarRental();
-            printf("case 15");
+            printf("\ncase 15");
             break;
         }
     }
