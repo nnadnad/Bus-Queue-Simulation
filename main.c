@@ -108,7 +108,7 @@ void departureBusTerminal2() {
     } 
     else if (temp < (5.0 * 60.0)){
         event_schedule(busArrival + 5.0 * 60.0, EVENT_DEPARTURE_BUS_TERMINAL_2); // kalau gaada yang naik atau turun
-        printf("%f\n", sim_time - busArrival);
+        // printf("%f\n", sim_time - busArrival);
     }
     else{
         sampst ((sim_time - busArrival), VARIABLE_BUS_STOP_TERMINAL_2);
@@ -244,19 +244,19 @@ void loadPersonCarRental() {
 
 int main() {
 
-    printf("start: %.2f", sim_time);
+    printf("start: %.2f\n", sim_time);
 
     init_simlib(); // harus init simlib
     // initModel();
-    printf("\nCase mulai\n");
+    // printf("\nCase mulai\n");
     event_schedule(sim_time + expon(60.0 * 60.0 / 14.0, STREAM_INTERARRIVAL_TERMINAL_1), EVENT_ARRIVAL_PERSON_TERMINAL_1);
 	event_schedule(sim_time + expon(60.0 * 60.0 / 10.0, STREAM_INTERARRIVAL_TERMINAL_2), EVENT_ARRIVAL_PERSON_TERMINAL_2);
 	event_schedule(sim_time + expon(60.0 * 60.0 / 24.0, STREAM_INTERARRIVAL_CAR_RENTAL), EVENT_ARRIVAL_PERSON_CAR_RENTAL);
     event_schedule(sim_time + 4.5 / 30.0 * 60.0 * 60.0, EVENT_ARRIVAL_BUS_TERMINAL_1); 
     event_schedule(sim_time + 80.0 * 60.0 * 60.0, EVENT_END_SIMULATION);
 
-    // sampst(0.0, 0);
-    // timest(0.0, 0);
+    sampst(0.0, 0);
+    timest(0.0, 0);
 
     // printf("test");
     while ( next_event_type != EVENT_END_SIMULATION) {
@@ -325,7 +325,7 @@ int main() {
             break;
         }
     }
-    printf("\nCase Selesai\n");
+    // printf("\nCase Selesai\n");
 
     // printf("\n\ntest 2");
     out_sampst(stdout, 1, 12);
@@ -371,7 +371,7 @@ int main() {
     // timest(0, -VARIABLE_NUM_BUS);
     printf("(C) Average and maximum number on the bus\n");
     printf("       - Avreage: %.2lf\n", transfer[1]);
-    printf("       - Maximun: %.2lf\n", transfer[2]);
+    printf("       - Maximun: %.2lf\n\n", transfer[2]);
     
     // sampst(0, -VARIABLE_BUS_STOP_TERMINAL_1);
     printf("(D) Average, maximum, and minimum time bus stopped at each location\n");
@@ -391,13 +391,13 @@ int main() {
     printf("    3. Car Rental:\n");
     printf("       - Avreage: %.2lf\n", transfer[1]);
     printf("       - Maximun: %.2lf\n", transfer[3]);
-    printf("       - Minimum: %.2lf\n", transfer[4]);
+    printf("       - Minimum: %.2lf\n\n", transfer[4]);
 
     // sampst(0, -VARIABLE_BUS_LOOP);
     printf("(E) Average, maximum, and minimum time bus making a loop\n");
     printf("       - Avreage: %.2lf\n", transfer[1]);
     printf("       - Maximun: %.2lf\n", transfer[3]);
-    printf("       - Minimum: %.2lf\n", transfer[4]);
+    printf("       - Minimum: %.2lf\n\n", transfer[4]);
 
     // sampst(0, -VARIABLE_PERSON_SYSTEM);
     printf("(F) Average, maximum, and minimum time person in the system\n");
