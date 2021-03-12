@@ -152,9 +152,9 @@ void loadPersonTerminal2() {
 void arrivalPersonCarRental() {
     transfer[DATA_ARRIVAL_TIME] = sim_time;
 
-    // double prob_distrib[3] = {0, 0.583, 1};
-    double prob_distrib[2] = {0.583, 0.417};
-    if (random_integer(prob_distrib, STREAM_DESTINATION) == 0.583)
+    double prob_distrib[3] = {0, 0.583, 1};
+    // double prob_distrib[2] = {0.583, 0.417};
+    if (random_integer(prob_distrib, STREAM_DESTINATION) == 1)
         transfer[DATA_DESTINATION] = DESTINATION_TERMINAL_1;
     else
         transfer[DATA_DESTINATION] = DESTINATION_TERMINAL_2;
@@ -376,7 +376,7 @@ int main() {
     printf("       - MAX: %.2lf\n\n", transfer[2]);
     
     sampst(0, -VARIABLE_BUS_STOP_TERMINAL_1);
-    printf("(D) Average, maximum, and MIN time bus stopped at each location\n");
+    printf("(D) Average, maximum, and Minimum time bus stopped at each location\n");
     printf("    1. Terminal 1:\n");
     printf("       - AVG: %.2lf\n", transfer[1]);
     printf("       - MAX: %.2lf\n", transfer[3]);
@@ -396,13 +396,13 @@ int main() {
     printf("       - MIN: %.2lf\n\n", transfer[4]);
 
     sampst(0, -VARIABLE_BUS_LOOP);
-    printf("(E) Average, maximum, and MIN time bus making a loop\n");
+    printf("(E) Average, maximum, and Minimum time bus making a loop\n");
     printf("       - AVG: %.2lf\n", transfer[1]);
     printf("       - MAX: %.2lf\n", transfer[3]);
     printf("       - MIN: %.2lf\n\n", transfer[4]);
 
     sampst(0, -VARIABLE_PERSON_SYSTEM);
-    printf("(F) Average, maximum, and MIN time person in the system\n");
+    printf("(F) Average, maximum, and Minimum time person in the system\n");
     printf("       - AVG: %.2lf\n", transfer[1]);
     printf("       - MAX: %.2lf\n", transfer[3]);
     printf("       - MIN: %.2lf\n", transfer[4]);
